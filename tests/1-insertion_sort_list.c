@@ -15,17 +15,19 @@ void insertion_sort_list(listint_t **list)
 	while (forward)
 	{
 		backward = forward->prev;
+		temp = forward;
 		while (backward)
 		{
-			if (forward->n < backward->n)
+			if (temp->n < backward->n)
 			{
-				temp = backward;
-				backward = backward->next;
+				backward->next = temp->next;
+				if (temp->next->prev)
+					temp->next->prev = backward;
 				backward->prev = temp;
 				temp->next = backward;
 				print_list(*list);
-				backward = backward->prev;
 			}
+			backward = backward->prev;
 		}
 		forward = forward->next;
 	}
