@@ -7,13 +7,15 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *trav;
+	listint_t *trav, *reset, *temp;
 
 	trav = *list;
 	while (trav != NULL && trav->next != NULL)
 	{
 		if (trav->n > trav->next->n)
 		{
-			while (
+			reset = trav->next;
+			while (reset->prev)
+			{
 
 }
