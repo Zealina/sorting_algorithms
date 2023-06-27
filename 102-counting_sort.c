@@ -24,12 +24,8 @@ void counting_sort(int *array, size_t size)
 	counting_array = malloc(sizeof(int) * (high + 1));
 	if (counting_array == NULL)
 		return;
-	i = 0;
-	while (counting_array[i])
-	{
-		counting_array[i] = 0;
-		i++;
-	}	
+	for (j = 0; j < (high + 1); j++)
+		counting_array[j] = 0;
 	for (i = 0; i < size; i++)
 		counting_array[array[i]]++;
 	for (j = 1; j < (high + 1); j++)
@@ -37,7 +33,10 @@ void counting_sort(int *array, size_t size)
 	print_array(counting_array, high + 1);
 	result = malloc(sizeof(int) * size);
 	if (result == NULL)
+	{
+		free(counting_array);
 		return;
+	}
 	for (j = size - 1; j >= 0; j--)
 	{
 		counting_array[array[j]]--;
@@ -46,4 +45,5 @@ void counting_sort(int *array, size_t size)
 	free(counting_array);
 	for (i = 0; i < size; i++)
 		array[i] = result[i];
+	free(result);
 }
