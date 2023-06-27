@@ -1,6 +1,4 @@
 #include "sort.h"
-#include <stdio.h>
-
 /**
  * cocktail_sort_list - Sort using bidirectional bubble sort
  * @list: The unsorted list
@@ -8,7 +6,7 @@
  */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *current;
+	listint_t *current, *temp;
 	int swapped = 1;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
@@ -21,7 +19,10 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (current->n > current->next->n)
 			{
-				swap_nodes(current->next, current);
+				temp = current->next;
+				swap_nodes(temp, current);
+				if (temp->prev == NULL)
+					*list = temp;
 				swapped = 1;
 				print_list(*list);
 			}
