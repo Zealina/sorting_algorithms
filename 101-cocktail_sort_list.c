@@ -17,13 +17,11 @@ void cocktail_sort_list(listint_t **list)
 	while (swapped)
 	{
 		swapped = 0;
-		while (current != NULL && current->next != NULL)
+		while (current->next != NULL)
 		{
 			if (current->n > current->next->n)
 			{
 				swap_nodes(current->next, current);
-				if (current->prev == NULL)
-					(*list) = current;
 				swapped = 1;
 				print_list(*list);
 			}
