@@ -1,7 +1,6 @@
 #include "sort.h"
 /**
- * insertion_sort_list - Sorts a doubly linked
- *	list using insertion sort algorithm
+ * insertion_sort_list - Sorts a doubly linked list using insertion sort algorithm
  * @list: The list to be sorted
  */
 void insertion_sort_list(listint_t **list)
@@ -25,14 +24,14 @@ void insertion_sort_list(listint_t **list)
 			if (temp->next != NULL)
 				temp->next->prev = prev;
 			prev->next = temp->next;
-			temp->prev = prev->prev;
-			temp->next = prev;
-			prev->prev = temp;
-			if (temp->prev == NULL)
+	    		temp->prev = prev->prev;
+	    		temp->next = prev;
+	    		prev->prev = temp;
+	    		if (temp->prev == NULL)
 				*list = temp;
-			prev = temp->prev;
-			print_list(*list);
+	    		prev = temp->prev;
+	    		print_list(*list);
 		}
 		current = current->next;
-	}
+    	}
 }
